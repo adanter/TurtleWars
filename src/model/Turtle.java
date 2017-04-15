@@ -11,16 +11,14 @@ public class Turtle extends GameObject {
     int health;
     Weapon weapon;
     double size;
-    int color;
     private ObjectVector position = new ObjectVector(0,0);
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
 
-    public Turtle(ObjectVector position, double size, int color) {
+    public Turtle(ObjectVector position, double size) {
         this.position = position;
         this.size = size;
-        this.color = color;
     }
 
     public void changeVel(int direction){
@@ -42,6 +40,9 @@ public class Turtle extends GameObject {
     }
 
     public void interact(GameObject other) {}
+    public void closeTo(GameObject other) {
+        //if distance within size
+    }
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
@@ -50,5 +51,6 @@ public class Turtle extends GameObject {
     }
     public ObjectVector getPosition() {return position;}
     public ObjectVector getVelocity() {return velocity;}
+    public double getSize() {return size;}
 
 }

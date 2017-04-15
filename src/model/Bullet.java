@@ -7,6 +7,7 @@ package model;
 public class Bullet {
     private ObjectVector velocity;
     private ObjectVector position;
+    private double size;
     private int damage;
 
     public Bullet (ObjectVector position, ObjectVector velocity) {
@@ -20,6 +21,10 @@ public class Bullet {
 
     public ObjectVector getVelocity() {
         return velocity;
+    }
+
+    public double getSize() {
+        return size;
     }
 
     public void update() {
