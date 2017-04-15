@@ -10,10 +10,10 @@ public class Bullet {
     private double yPosition;
     private int damage;
 
-    public Bullet (double x, double y, ObjectVector vector) {
+    public Bullet (ObjectVector position, ObjectVector vector) {
         this.vector = vector;
-        this.xPosition = x;
-        this.yPosition = y;
+        this.xPosition = position.getx();
+        this.yPosition = position.getY();
     }
 
     public double getxPosition() {
