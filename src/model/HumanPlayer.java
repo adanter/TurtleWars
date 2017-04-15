@@ -6,7 +6,6 @@ package model;
  */
 public class HumanPlayer extends Player {
     int keys;
-    Turtle turtle;
 
     public HumanPlayer(Game game) {
         turtle = new Turtle(new ObjectVector(0,0), 1, game);

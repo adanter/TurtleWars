@@ -33,10 +33,11 @@ public class Turtle extends GameObject {
         position = position.addVector(velocity);
         setPosition(position);
         directionFacing += rotateVel;
+        System.out.println("updating");
     }
 
     public void interact(GameObject other) {
-        if (other instanceof Bullet) {
+        if (other instanceof Bullet && closeTo(other)) {
             Bullet bullet = (Bullet) other;
             if (bullet.getParentTurtle() != this) {
                 health -= bullet.getDamage();

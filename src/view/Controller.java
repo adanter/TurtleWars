@@ -32,6 +32,15 @@ public class Controller {
         game.runGame();
     }
 
+    public void newGameButtonClicked() {
+        Player firstPlayer = new HumanPlayer(game);
+        players.add(firstPlayer);
+        game.addPlayer(firstPlayer);
+        game.addTurtle(firstPlayer.getTurtle());
+        runGame();
+    }
+
+
     public void menuButtonClicked() {
         System.out.println("Pressed Button");
         fillStatusBar();

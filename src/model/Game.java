@@ -49,13 +49,18 @@ public class Game {
                 }
             }
 
+            ArrayList<Turtle> nextTurtles = new ArrayList<>();
+            ArrayList<Bullet> nextBullets = new ArrayList<>();
             //Run death checks
             for (Turtle turtle : turtles) {
-                if (turtle.isDead()) turtles.remove(turtle);
+                if (!turtle.isDead()) nextTurtles.add(turtle);
             }
             for (Bullet bullet : bullets) {
-                if (bullet.isDead()) bullets.remove(bullet);
+                if (!bullet.isDead()) nextBullets.add(bullet);
             }
+
+            turtles = nextTurtles;
+            bullets = nextBullets;
 
             if (turtles.size() <= 1) gameOver = true;
 

@@ -12,6 +12,9 @@
             <Button fx:id="menuButton" text="Menu"
             onAction="#menuButtonClicked">
             </Button>
+            <Button fx:id="newGame" text="New Game"
+                    onAction="#newGameButtonClicked">
+            </Button>
         </HBox>
         <GridPane fx:id="display"
                   prefHeight="450" prefWidth="600">
