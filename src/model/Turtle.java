@@ -14,6 +14,7 @@ public class Turtle extends GameObject {
     public Turtle(ObjectVector position, double size, Game game) {
         setPosition(position);
         this.size = size;
+        health = 10;
     }
 
     public void changeVel(int direction){
@@ -30,7 +31,7 @@ public class Turtle extends GameObject {
 
     public void move(double timeStep) {
         ObjectVector posChange = velocity.scalarMultiply(timeStep);
-        position = position.addVector(velocity);
+        position = position.addVector(posChange);
         setPosition(position);
         directionFacing += rotateVel;
         System.out.println(position.getX() + "," +position.getY());

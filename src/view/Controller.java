@@ -36,21 +36,25 @@ public class Controller{
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<HBox> healthBarList = new ArrayList<>();
     private Game game = new Game();
+    Thread t = new Thread(game);
 
     public Controller() {
         addPlayer(true);
     }
 
-    public void runGame() {
-        game.runGame();
+    public void runGame(){
+        //game.runGame();
     }
 
-    public void newGameButtonClicked() {
+    public void newGameButtonClicked() throws InterruptedException{
         Player firstPlayer = new HumanPlayer(game);
         players.add(firstPlayer);
         game.addPlayer(firstPlayer);
-        game.addTurtle(firstPlayer.getTurtle());
-        runGame();
+        try {
+            t.start();
+        } catch (IllegalThreadStateException e) {
+            game.run();
+        }
     }
 
 

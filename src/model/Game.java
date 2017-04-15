@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Adante on 4/14/2017.
  */
-public class Game {
+public class Game implements Runnable{
     private int numPlayers;
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
     private ArrayList<Turtle> turtles = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Game {
      * Once the game has been set up (i.e., players and turtles have been instantiated), this method will run the game
      * in real time.  The idea is that it will loop over all game objects (turtles, bullets) and move them.
      */
-    public void runGame() {
+    public void run() {
         boolean gameOver = false;
         long prevTime;
         long curTime = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class Game {
         while (!gameOver) {
             prevTime = curTime;
             curTime = System.currentTimeMillis();
-            elapsedTime = (double) (curTime - prevTime) * .001; //elapsed time in seconds
+            elapsedTime = (double) (curTime - prevTime) * 0.001; //elapsed time in seconds
 
             //Resolve player actions
             for (Player player : players) {
@@ -37,7 +37,8 @@ public class Game {
 
             //Update turtles
             for (Turtle turtle : turtles) {
-                turtle.move(elapsedTime);
+                //turtle.move(elapsedTime);
+                turtle.move(1);
             }
 
             ArrayList<Bullet> nextBullets = new ArrayList<>();
@@ -69,6 +70,10 @@ public class Game {
                 gameOver = true;
             }
             index ++;
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
         }
     }
 
