@@ -15,17 +15,16 @@ public class Game {
      */
     public void runGame() {
         boolean gameOver = false;
-//        long prevTime;
-//        long curTime = System.currentTimeMillis();
-//        long elapsedTime;
+        long prevTime;
+        long curTime = System.currentTimeMillis();
+        double elapsedTime;
         while (!gameOver) {
-//            prevTime = curTime;
-//            curTime = System.currentTimeMillis();
-//            elapsedTime = curTime - prevTime;
-            // TODO: Update all game objects
+            prevTime = curTime;
+            curTime = System.currentTimeMillis();
+            elapsedTime = (double) curTime - prevTime;
             for (int i = 0; i < objects.size(); i++) {
                 GameObject object = objects.get(i);
-                object.update(0.001);
+                object.update(elapsedTime);
                 for (int j = i+1; j < objects.size(); j++) {
                     GameObject object2 = objects.get(j);
                     if (object2 != object) {

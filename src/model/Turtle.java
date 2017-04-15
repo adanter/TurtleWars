@@ -20,10 +20,12 @@ public class Turtle extends GameObject {
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
+//    private Weapon weapon;
 
     public Turtle(ObjectVector position, double size) {
         setPosition(position);
         this.size = size;
+//        this.weapon = new Weapon(this);
     }
 
     public void setPosition(ObjectVector new_position) {
@@ -54,12 +56,14 @@ public class Turtle extends GameObject {
     }
 
     public void interact(GameObject other) {}
+
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
         vector.getUnitVector();
-        new Bullet(position, vector);
+        new Bullet(position, vector, this);
     }
+
     public ObjectVector getVelocity() {return velocity;}
     public double getSize() {return size;}
 

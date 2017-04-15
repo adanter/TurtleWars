@@ -9,10 +9,13 @@ public class Bullet {
     private ObjectVector position;
     private double size;
     private int damage;
+    private Turtle parentTurtle;
 
-    public Bullet (ObjectVector position, ObjectVector velocity) {
+    public Bullet (ObjectVector position, ObjectVector velocity, Turtle parentTurtle) {
         this.velocity = velocity;
         this.position = position;
+        this.parentTurtle = parentTurtle;
+        this.size = 3; //TODO: Scale bullet size when we have an idea of what coordinates are like
     }
 
     public ObjectVector getPosition() {
@@ -27,7 +30,16 @@ public class Bullet {
         return size;
     }
 
-    public void update() {
+    public void update(double timestep) {
+        velocity.scalarMultiply(timestep);
         position.addVector(velocity);
+    }
+
+    public Turtle getParentTurtle() {
+        return parentTurtle;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 }
