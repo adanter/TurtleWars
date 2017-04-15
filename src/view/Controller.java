@@ -107,7 +107,7 @@ public class Controller{
         ObjectObserver playerObj = new ObjectObserver();
         p.turtle.addObserver(playerObj);
         Node n = playerObj.getObservedShape();
-        display.getChildren();
+        display.getChildren().add(n);
     }
 
     public void keyListener(KeyEvent event) {
