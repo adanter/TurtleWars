@@ -4,7 +4,7 @@ package model;
 /**
  * The human player responds to key input and calls the methods of its turtle
  */
-public class HumanPlayer implements PlayerInterface {
+public class HumanPlayer extends Player {
     int keys;
     Turtle turtle;
 

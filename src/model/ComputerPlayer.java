@@ -5,7 +5,7 @@ package model;
  * The computer player determines its actions through some AI
  * and calls the methods of its turtle
  */
-public class ComputerPlayer implements PlayerInterface{
+public class ComputerPlayer extends Player{
     Turtle turtle;
 
     public boolean isHuman(){
