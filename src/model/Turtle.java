@@ -1,8 +1,6 @@
 package model;
 
 
-import java.util.ArrayList;
-
 /**
  * Implements the position and movement of turtle
  */
@@ -57,7 +55,7 @@ public class Turtle extends GameObject {
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
         vector.getUnitVector();
-        game.addObject(new Bullet(position, vector, this));
+        game.addBullet(new Bullet(position, vector, this));
     }
 
     public ObjectVector getVelocity() {return velocity;}

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class Game {
     private int numPlayers;
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    private ArrayList<Turtle> turtles = new ArrayList<>();
+    private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
 
     public Game() {
@@ -26,9 +28,13 @@ public class Game {
             prevTime = curTime;
             curTime = System.currentTimeMillis();
             elapsedTime = (double) (curTime - prevTime) * .001; //elapsed time in seconds
+
+            //Resolve player actions
             for (Player player : players) {
                 player.getAutoAction();
             }
+
+            //Update objects and run interactions
             for (int i = 0; i < objects.size(); i++) {
                 GameObject object = objects.get(i);
                 object.update(elapsedTime);
@@ -42,15 +48,43 @@ public class Game {
                     }
                 }
             }
-            gameOver = true;
+
+            //Run death checks
+            for (Turtle turtle : turtles) {
+                if (turtle.isDead()) turtles.remove(turtle);
+            }
+            for (Bullet bullet : bullets) {
+                if (bullet.isDead()) bullets.remove(bullet);
+            }
+
+            if (turtles.size() <= 1) gameOver = true;
+
+            gameOver = true; //TODO: Remove this when we're ready to run!
         }
     }
 
-    public void addObject(GameObject object) {
-        objects.add(object);
+    public void addTurtle(Turtle turtle) {
+        turtles.add(turtle);
+    }
+
+    public void addBullet(Bullet bullet) {
+        bullets.add(bullet);
     }
 
     public void addPlayer(Player player) {
         players.add(player);
+        turtles.add(player.getTurtle());
+    }
+
+    public ArrayList<Turtle> getTurtles() {
+        return turtles;
+    }
+
+    public ArrayList<Bullet> getBullets() {
+        return bullets;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 }
