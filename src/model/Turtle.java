@@ -40,16 +40,12 @@ public class Turtle extends GameObject {
     }
 
     public void interact(GameObject other) {}
-    public void closeTo(GameObject other) {
-        //if distance within size
-    }
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
         vector.getUnitVector();
         new Bullet(position, vector);
     }
-    public ObjectVector getPosition() {return position;}
     public ObjectVector getVelocity() {return velocity;}
     public double getSize() {return size;}
 
