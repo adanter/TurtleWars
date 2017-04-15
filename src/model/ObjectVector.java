@@ -5,8 +5,8 @@ package model;
  */
 public class ObjectVector {
 
-    double xVelocity;
-    double yVelocity;
+    private double xVelocity;
+    private double yVelocity;
 
     public ObjectVector (double xVelocity, double yVelocity) {
         this.xVelocity = xVelocity;
@@ -45,5 +45,13 @@ public class ObjectVector {
     public void addVector (ObjectVector vector) {
         yVelocity += vector.yVelocity;
         xVelocity += vector.xVelocity;
+    }
+
+    public ObjectVector getUnitVector () {
+        double mag = getMagnitude();
+        double newX = xVelocity / mag;
+        double newY = yVelocity / mag;
+        ObjectVector u = new ObjectVector(newX, newY);
+        return u;
     }
 }
