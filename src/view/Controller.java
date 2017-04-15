@@ -21,12 +21,10 @@ public class Controller {
     @FXML
     HBox statusBar;
     private int numPlayers;
-    private Map<Player, Turtle> playerTurtleMap;
     ArrayList<Player> players = new ArrayList<Player>();
 
     public Controller() {
-        Player testPlayer = new HumanPlayer();
-        players.add(testPlayer);
+        addPlayer(true);
     }
 
     public void menuButtonClicked() {
@@ -102,8 +100,7 @@ public class Controller {
         } else {
             newPlayer = new ComputerPlayer();
         }
-        Turtle newTurtle = new Turtle();
-        playerTurtleMap.put(newPlayer, newTurtle);
+        players.add(newPlayer);
     }
 
 }
