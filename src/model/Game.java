@@ -24,6 +24,7 @@ public class Game {
         long prevTime;
         long curTime = System.currentTimeMillis();
         double elapsedTime;
+        int index = 0;
         while (!gameOver) {
             prevTime = curTime;
             curTime = System.currentTimeMillis();
@@ -62,8 +63,12 @@ public class Game {
             turtles = nextTurtles;
             bullets = nextBullets;
 
-            if (turtles.size() <= 1) gameOver = true;
-            gameOver = true; //TODO: Remove this when we're ready to run!
+            //if (turtles.size() <= 1) gameOver = true;
+            //gameOver = true; //TODO: Remove this when we're ready to run!
+            if (index > 5){
+                gameOver = true;
+            }
+            index ++;
         }
     }
 

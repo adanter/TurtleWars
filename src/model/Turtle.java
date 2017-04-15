@@ -33,7 +33,7 @@ public class Turtle extends GameObject {
         position = position.addVector(velocity);
         setPosition(position);
         directionFacing += rotateVel;
-        System.out.println("updating");
+        System.out.println(position.getX() + "," +position.getY());
     }
 
     public void interact(GameObject other) {
