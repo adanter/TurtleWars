@@ -6,4 +6,5 @@ public class Player{
     public boolean isHuman() { return true;}
     public void getKeyAction(String keyPressed) {}
     public void getAutoAction() {}
+    public Turtle getTurtle() {return turtle;}
 }

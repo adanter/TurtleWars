@@ -10,6 +10,7 @@ public class GameObject {
     ObjectVector position;
     public ObservableDoubleValue x;
     public ObservableDoubleValue y;
+    boolean isDead;
     double size;
 
     public void setPosition(ObjectVector new_position) {

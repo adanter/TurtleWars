@@ -22,14 +22,10 @@ public class Controller {
     private ArrayList<GameObject> turtles;
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<HBox> healthBarList = new ArrayList<>();
-    private Game game;
+    private Game game = new Game();
 
     public Controller() {
         addPlayer(true);
-    }
-
-    public void newGame() {
-        game = new Game();
     }
 
     public void runGame() {
@@ -126,5 +122,4 @@ public class Controller {
         }
         players.add(newPlayer);
     }
-
 }

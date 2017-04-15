@@ -1,9 +1,6 @@
 
 package model;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableDoubleValue;
-
 /**
  * Bullets are produced by turtles and deal damage if they hit another turtle
  */
@@ -11,6 +8,8 @@ public class Bullet extends GameObject{
     private ObjectVector velocity;
     private int damage;
     private Turtle parentTurtle;
+    private double distanceTraveled = 0;
+    private double range = 100; //TODO: Scale when we know more about coordinates
 
     public Bullet (ObjectVector position, ObjectVector velocity, Turtle parentTurtle) {
         setPosition(position);
@@ -22,10 +21,21 @@ public class Bullet extends GameObject{
         velocity.scalarMultiply(timeStep);
         position.addVector(velocity);
         setPosition(position);
+        distanceTraveled += velocity.getMagnitude();
+        if (distanceTraveled >= range) isDead = true;
     }
 
-    public void interact(GameObject other) {}
+    public void interact(GameObject other) {
+        if(other instanceof Turtle && other != parentTurtle) {
+            if(closeTo(other)) {
+                isDead = true;
+            }
+        }
+    }
 
+    public boolean isDead() {
+        return isDead;
+    }
 
     public ObjectVector getVelocity() {
         return velocity;

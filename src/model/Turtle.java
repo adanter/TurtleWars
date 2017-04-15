@@ -53,8 +53,8 @@ public class Turtle extends GameObject {
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(directionFacing);
-        vector = vector.getUnitVector();
-        game.addObject(new Bullet(position, vector, this));
+        vector.getUnitVector();
+        game.addBullet(new Bullet(position, vector, this));
     }
 
     public ObjectVector getVelocity() {return velocity;}
