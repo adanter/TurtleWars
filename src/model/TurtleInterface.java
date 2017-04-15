@@ -1,8 +1,8 @@
 package model;
 
 interface TurtleInterface {
-    void accelerate(int direction);
-    void turn(int direction);
+    void changeVel(int direction);
+    void move(double timeStep);
     void shoot();
     int[] getPos();
 }

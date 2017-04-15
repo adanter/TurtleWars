@@ -1,10 +1,9 @@
 package model;
 
-
 /**
  * Implements the position and movement of turtle
  */
-public class Turtle {
+public class TurtleAcc {
     /**
      * INSTANCE VARIABLES
      */
@@ -16,21 +15,24 @@ public class Turtle {
     private double[] pos = new double[2];
     private double[] velocity = new double[2];
     private double direction_facing;
-    private double rotate_vel = 0;
+    private double rotateVel = 0;
 
-    public void changeVel(int direction){
-        // set velocity to vector(direction_facing) times direction
+    public void accelerate(int direction){
+        // add direction*vector(direction_facing) to velocity
     }
-    // side: -1 = left, 1 = right
+    // direction: -1 = left, 1 = right
     public void turn(int side) {
-        rotate_vel = side;
+        rotateVel += side;
     }
 
     public void move(double timeStep) {
-        //pos += velocity;
-        //direction_facing += rotate_vel
+        // some type of friction on velocity and rotateVel
+        // pos += velocity;
+        // direction_facing += rotateVel
     }
-    public void shoot(){}
+    public void shoot(){
+        //creates bullet object with direction and starting position
+    }
     public double[] getPos() {return pos;}
     public double[] getVelocity() {return velocity;}
 }
