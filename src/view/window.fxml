@@ -17,9 +17,9 @@
             </Button>
         </HBox>
         <GridPane fx:id="display"
-                  prefHeight="450" prefWidth="600">
+                  prefHeight="450" prefWidth="600"
+                  alignment="center" hgap="10" vgap="10">
         </GridPane>
-
         <HBox fx:id="statusBar"
         spacing="20">
         </HBox>

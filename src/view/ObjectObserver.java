@@ -26,4 +26,8 @@ public class ObjectObserver implements Observer{
         shape.layoutXProperty().setValue(pos.getX());
         shape.layoutXProperty().setValue(pos.getY());
     }
+
+    public Shape getObservedShape(){
+        return shape;
+    }
 }

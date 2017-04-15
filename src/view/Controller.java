@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableDoubleValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -38,18 +39,20 @@ public class Controller{
     private Game game = new Game();
     Thread t = new Thread(game);
 
-    public Controller() {
-        addPlayer(true);
-    }
+//    public Controller() {
+//    }
 
     public void runGame(){
         //game.runGame();
     }
 
-    public void newGameButtonClicked() throws InterruptedException{
+    public void newGameButtonClicked() {
         Player firstPlayer = new HumanPlayer(game);
         players.add(firstPlayer);
         game.addPlayer(firstPlayer);
+        game.addTurtle(firstPlayer.getTurtle());
+        addPlayer(true);
+        runGame();
         try {
             t.start();
         } catch (IllegalThreadStateException e) {
@@ -86,20 +89,28 @@ public class Controller{
         statusBar.getChildren().addAll(v);
     }
 
-    public HBox genHealthBar(int curHealth){
+    public HBox genHealthBar(int curHealth) {
         HBox result = new HBox(1);
-        for (int i = 0; i < curHealth; i++){
-            Rectangle r = new Rectangle(4,7, Paint.valueOf("red"));
+        for (int i = 0; i < curHealth; i++) {
+            Rectangle r = new Rectangle(4, 7, Paint.valueOf("red"));
             result.getChildren().add(r);
         }
         for (int i = curHealth; i < 10; i++) {
-            Rectangle r = new Rectangle(4,7, Paint.valueOf("black"));
+            Rectangle r = new Rectangle(4, 7, Paint.valueOf("black"));
             result.getChildren().add(r);
         }
         return result;
     }
 
-    public void keyListener(KeyEvent event){
+    @FXML
+    public void buildPlayer(Player p) {
+        ObjectObserver playerObj = new ObjectObserver();
+        p.turtle.addObserver(playerObj);
+        Node n = playerObj.getObservedShape();
+        display.getChildren();
+    }
+
+    public void keyListener(KeyEvent event) {
         String keyCode = "none";
         switch (event.getCode()){
             case UP : keyCode = "forward";
@@ -117,6 +128,7 @@ public class Controller{
             }
         }
     }
+
     public void keyReleaseListener(KeyEvent release) {
         String keyCode = "none";
         switch(release.getCode()){
@@ -136,14 +148,11 @@ public class Controller{
         }
     }
 
-    public void update(Observable o,Object arg){
-
-    }
-
     /**
      * Method for creating a new player and a corresponding turtle
      */
-    private void addPlayer(boolean isHuman) {
+    @FXML
+    public void addPlayer(boolean isHuman) {
         Player newPlayer;
         if (isHuman) {
             newPlayer = new HumanPlayer(game);
@@ -151,7 +160,7 @@ public class Controller{
             newPlayer = new ComputerPlayer(game);
         }
         players.add(newPlayer);
-        newPlayer.turtle.addObserver(new ObjectObserver());
+        buildPlayer(newPlayer);
     }
 
 }
