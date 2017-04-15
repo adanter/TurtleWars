@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class Game {
     private int numPlayers;
     private ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    private ArrayList<Player> players = new ArrayList<>();
+
+    public Game() {
+    }
 
     /**
      * Once the game has been set up (i.e., players and turtles have been instantiated), this method will run the game
@@ -21,7 +25,10 @@ public class Game {
         while (!gameOver) {
             prevTime = curTime;
             curTime = System.currentTimeMillis();
-            elapsedTime = (double) curTime - prevTime;
+            elapsedTime = (double) (curTime - prevTime) * .001; //elapsed time in seconds
+            for (Player player : players) {
+                player.getAutoAction();
+            }
             for (int i = 0; i < objects.size(); i++) {
                 GameObject object = objects.get(i);
                 object.update(elapsedTime);
@@ -37,5 +44,13 @@ public class Game {
             }
             gameOver = true;
         }
+    }
+
+    public void addObject(GameObject object) {
+        objects.add(object);
+    }
+
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 }

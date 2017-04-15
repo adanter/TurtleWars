@@ -20,6 +20,7 @@ public class GameObject {
 
     public void update(double timeStep) {}
     public void interact(GameObject other) {}
+    public boolean isDead() {return false;}
 
     public ObjectVector getPosition() {return position;}
 

@@ -3,21 +3,14 @@ package view;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import model.ComputerPlayer;
-import model.HumanPlayer;
-import model.Player;
-import model.Turtle;
-import model.Game;
+import model.*;
 
-import java.util.Map;
 import java.util.ArrayList;
 
 public class Controller {
@@ -26,12 +19,21 @@ public class Controller {
     @FXML
     GridPane display;
     private int numPlayers;
-    private Map<Player, Turtle> playerTurtleMap;
+    private ArrayList<GameObject> turtles;
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<HBox> healthBarList = new ArrayList<>();
+    private Game game;
 
     public Controller() {
         addPlayer(true);
+    }
+
+    public void newGame() {
+        game = new Game();
+    }
+
+    public void runGame() {
+        game.runGame();
     }
 
     public void menuButtonClicked() {
@@ -118,9 +120,9 @@ public class Controller {
     private void addPlayer(boolean isHuman) {
         Player newPlayer;
         if (isHuman) {
-            newPlayer = new HumanPlayer();
+            newPlayer = new HumanPlayer(game);
         } else {
-            newPlayer = new ComputerPlayer();
+            newPlayer = new ComputerPlayer(game);
         }
         players.add(newPlayer);
     }

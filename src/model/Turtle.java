@@ -47,6 +47,12 @@ public class Turtle extends GameObject {
         }
     }
 
+    public boolean isDead() {
+        if (health <= 0) {
+            return true;
+        } else return false;
+    }
+
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
