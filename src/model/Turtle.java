@@ -8,7 +8,7 @@ public class Turtle extends GameObject {
     /**
      * INSTANCE VARIABLES
      */
-    double health;
+    int health;
     Weapon weapon;
     int size;
     int color;

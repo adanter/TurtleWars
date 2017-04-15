@@ -8,16 +8,17 @@
           onKeyReleased="#keyReleaseListener">
     <VBox alignment="TOP_CENTER">
         <HBox fx:id="menuBar"
-              alignment="CENTER_LEFT">
+              alignment="CENTER_RIGHT">
             <Button fx:id="menuButton" text="Menu"
             onAction="#menuButtonClicked">
             </Button>
         </HBox>
-        <GridPane fx:id="display">
+        <GridPane fx:id="display"
+                  prefHeight="450" prefWidth="600">
         </GridPane>
 
-        <HBox fx:id="statusBars">
-
+        <HBox fx:id="statusBar"
+        spacing="20">
         </HBox>
 
     </VBox>
