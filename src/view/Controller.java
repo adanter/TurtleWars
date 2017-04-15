@@ -16,14 +16,25 @@ public class Controller {
     public void keyListener(KeyEvent event){
         switch (event.getCode()){
             case UP : System.out.println("UP");
-            break;
+                break;
             case DOWN: System.out.println("DOWN");
-            break;
+                break;
             case LEFT : System.out.println("LEFT");
-            break;
+                break;
             case RIGHT : System.out.println("RIGHT");
-            break;
+                break;
         }
-
+    }
+    public void keyReleaseListener(KeyEvent release) {
+        switch(release.getCode()){
+            case UP : System.out.println("Not UP");
+                break;
+            case DOWN: System.out.println("Not DOWN");
+                break;
+            case LEFT : System.out.println("Not LEFT");
+                break;
+            case RIGHT : System.out.println("Not RIGHT");
+                break;
+        }
     }
 }
