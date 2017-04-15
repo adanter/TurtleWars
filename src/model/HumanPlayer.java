@@ -8,6 +8,10 @@ public class HumanPlayer extends Player {
     int keys;
     Turtle turtle;
 
+    public HumanPlayer() {
+        turtle = new Turtle();
+    }
+
     public boolean isHuman(){
         return true;
     }

@@ -10,39 +10,58 @@ import model.Player;
 import model.Turtle;
 
 import java.util.Map;
+import java.util.ArrayList;
 
 public class Controller {
     @FXML
     HBox statusBar;
     private int numPlayers;
     private Map<Player, Turtle> playerTurtleMap;
+    ArrayList<Player> players = new ArrayList<Player>();
+
+    public Controller() {
+        Player testPlayer = new HumanPlayer();
+        players.add(testPlayer);
+    }
 
     public void menuButtonClicked() {
         System.out.println("Pressed Button");
     }
 
     public void keyListener(KeyEvent event){
+        String keyCode = "none";
         switch (event.getCode()){
-            case UP : System.out.println("UP");
+            case UP : keyCode = "forward";
                 break;
-            case DOWN: System.out.println("DOWN");
+            case DOWN: keyCode = "back";
                 break;
-            case LEFT : System.out.println("LEFT");
+            case LEFT : keyCode = "left";
                 break;
-            case RIGHT : System.out.println("RIGHT");
+            case RIGHT : keyCode = "right";
                 break;
+        }
+        for (Player thisPlayer: players) {
+            if (thisPlayer.isHuman()) {
+                thisPlayer.getKeyAction(keyCode);
+            }
         }
     }
     public void keyReleaseListener(KeyEvent release) {
+        String keyCode = "none";
         switch(release.getCode()){
-            case UP : System.out.println("Not UP");
+            case UP : keyCode = "notf";
                 break;
-            case DOWN: System.out.println("Not DOWN");
+            case DOWN: keyCode = "notb";
                 break;
-            case LEFT : System.out.println("Not LEFT");
+            case LEFT : keyCode = "notl";
                 break;
-            case RIGHT : System.out.println("Not RIGHT");
+            case RIGHT : keyCode = "notr";
                 break;
+        }
+        for (Player thisPlayer: players) {
+            if (thisPlayer.isHuman()) {
+                thisPlayer.getKeyAction(keyCode);
+            }
         }
     }
 

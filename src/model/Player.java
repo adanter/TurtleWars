@@ -1,7 +1,7 @@
 package model;
 
-public class Player implements PlayerInterface {
+public class Player{
     public boolean isHuman() { return true;}
-    public void getKeyAction(int keyPressed) {}
+    public void getKeyAction(String keyPressed) {}
     public void getAutoAction() {}
 }

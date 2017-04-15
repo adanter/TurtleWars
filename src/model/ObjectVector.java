@@ -49,8 +49,15 @@ public class ObjectVector {
 
     public ObjectVector getUnitVector () {
         double mag = getMagnitude();
-        double newX = xVelocity / mag;
-        double newY = yVelocity / mag;
+        double newX;
+        double newY;
+        if (mag == 0) {
+            newX = xVelocity;
+            newY = yVelocity;
+        } else {
+            newX = xVelocity / mag;
+            newY = yVelocity / mag;
+        }
         ObjectVector u = new ObjectVector(newX, newY);
         return u;
     }
