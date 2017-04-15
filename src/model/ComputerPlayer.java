@@ -7,12 +7,18 @@ package model;
  */
 public class ComputerPlayer extends Player{
     TurtleAcc turtle;
+    Game game;
+
+    public ComputerPlayer(Game game) {
+        this.game = game;
+    }
 
     public boolean isHuman(){
         return false;
     }
 
-    public void getAutoAction(){}
+    public void getAutoAction(){
+    }
 
     // don't implement - for humans
     public void getKeyAction(int keyPressed){}

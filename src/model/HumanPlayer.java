@@ -8,8 +8,8 @@ public class HumanPlayer extends Player {
     int keys;
     Turtle turtle;
 
-    public HumanPlayer() {
-        turtle = new Turtle(new ObjectVector(0,0), 1);
+    public HumanPlayer(Game game) {
+        turtle = new Turtle(new ObjectVector(0,0), 1, game);
     }
 
     public boolean isHuman(){
@@ -46,8 +46,4 @@ public class HumanPlayer extends Player {
                 break;
         }
     }
-
-    // don't implement - for computers
-    public void getAutoAction(){}
-
 }
