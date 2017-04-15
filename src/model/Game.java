@@ -7,8 +7,7 @@ import java.util.ArrayList;
  */
 public class Game {
     private int numPlayers;
-    private ArrayList<TurtleAcc> turtles = new ArrayList<TurtleAcc>();
-    private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    private ArrayList<GameObject> objects = new ArrayList<GameObject>();
 
     /**
      * Once the game has been set up (i.e., players and turtles have been instantiated), this method will run the game
@@ -24,6 +23,14 @@ public class Game {
 //            curTime = System.currentTimeMillis();
 //            elapsedTime = curTime - prevTime;
             // TODO: Update all game objects
+            for (GameObject object: objects) {
+                object.update(0.001);
+                for (GameObject object2: objects) {
+                    if (object2 != object) {
+
+                    }
+                }
+            }
         }
     }
 }

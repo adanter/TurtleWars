@@ -8,6 +8,7 @@ public class Bullet {
     private ObjectVector vector;
     private double xPosition;
     private double yPosition;
+    private double size;
     private int damage;
 
     public Bullet (ObjectVector position, ObjectVector vector) {
@@ -22,6 +23,10 @@ public class Bullet {
 
     public double getyPosition() {
         return yPosition;
+    }
+
+    public double getSize() {
+        return size;
     }
 
     public void update() {
