@@ -39,13 +39,16 @@ public class Game {
                 turtle.update(elapsedTime);
             }
 
+            ArrayList<Bullet> nextBullets = new ArrayList<>();
+            ArrayList<Turtle> nextTurtles = new ArrayList<>();
+
             //Update bullets, run interactions, and perform death checks
             for (Bullet bullet : bullets) {
                 bullet.update(elapsedTime);
                 for (Turtle turtle : turtles) {
                     bullet.interact(turtle);
                 }
-                if (bullet.isDead()) bullets.remove(bullet);
+                if (!bullet.isDead()) nextBullets.add(bullet);
             }
 
             //Run turtle interactions and perform death checks
@@ -53,8 +56,11 @@ public class Game {
                 for (Bullet bullet : bullets) {
                     turtle.interact(bullet);
                 }
-                if (turtle.isDead()) turtles.remove(turtle);
+                if (!turtle.isDead()) nextTurtles.add(turtle);
             }
+
+            turtles = nextTurtles;
+            bullets = nextBullets;
 
             if (turtles.size() <= 1) gameOver = true;
             gameOver = true; //TODO: Remove this when we're ready to run!
