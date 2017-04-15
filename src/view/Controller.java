@@ -102,5 +102,4 @@ public class Controller {
         }
         players.add(newPlayer);
     }
-
 }

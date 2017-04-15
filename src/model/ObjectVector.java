@@ -5,46 +5,46 @@ package model;
  */
 public class ObjectVector {
 
-    private double xVelocity;
-    private double yVelocity;
+    private double x;
+    private double y;
 
-    public ObjectVector (double xVelocity, double yVelocity) {
-        this.xVelocity = xVelocity;
-        this.yVelocity = yVelocity;
+    public ObjectVector (double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public double getxVelocity () {
-        return xVelocity;
+    public double getx() {
+        return x;
     }
 
-    public double getyVelocity () {
-        return yVelocity;
+    public double getY() {
+        return y;
     }
 
     public double getMagnitude () {
-        double mag = Math.sqrt(Math.pow(xVelocity, 2) + Math.pow(yVelocity, 2));
+        double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
         return mag;
     }
 
     public void scalarMultiply (double scalar) {
-        xVelocity = xVelocity * scalar;
-        yVelocity = yVelocity * scalar;
+        x = x * scalar;
+        y = y * scalar;
     }
 
     public double getAngle () {
-        double angle = Math.atan2(yVelocity, xVelocity);
+        double angle = Math.atan2(y, x);
         return angle;
     }
 
     public void setAngle (double angle) {
         double mag = getMagnitude();
-        yVelocity = mag * Math.sin(angle);
-        xVelocity = mag * Math.cos(angle);
+        y = mag * Math.sin(angle);
+        x = mag * Math.cos(angle);
     }
 
     public void addVector (ObjectVector vector) {
-        yVelocity += vector.yVelocity;
-        xVelocity += vector.xVelocity;
+        y += vector.y;
+        x += vector.x;
     }
 
     public ObjectVector getUnitVector () {
@@ -52,11 +52,11 @@ public class ObjectVector {
         double newX;
         double newY;
         if (mag == 0) {
-            newX = xVelocity;
-            newY = yVelocity;
+            newX = x;
+            newY = y;
         } else {
-            newX = xVelocity / mag;
-            newY = yVelocity / mag;
+            newX = x / mag;
+            newY = y / mag;
         }
         ObjectVector u = new ObjectVector(newX, newY);
         return u;
