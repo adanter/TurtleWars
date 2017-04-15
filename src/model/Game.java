@@ -13,7 +13,7 @@ public class Game {
      * Once the game has been set up (i.e., players and turtles have been instantiated), this method will run the game
      * in real time.  The idea is that it will loop over all game objects (turtles, bullets) and update them.
      */
-    private void runGame() {
+    public void runGame() {
         boolean gameOver = false;
 //        long prevTime;
 //        long curTime = System.currentTimeMillis();
@@ -36,6 +36,7 @@ public class Game {
                     }
                 }
             }
+            gameOver = true;
         }
     }
 }

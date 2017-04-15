@@ -5,11 +5,7 @@ package model;
  * Implements the position and movement of turtle
  */
 public class Turtle extends GameObject {
-    /**
-     * INSTANCE VARIABLES
-     */
     int health;
-    Weapon weapon;
     double size;
     private ObjectVector position = new ObjectVector(0,0);
     private ObjectVector velocity = new ObjectVector(0,0);
@@ -28,6 +24,7 @@ public class Turtle extends GameObject {
         nextVel.scalarMultiply(direction);
         velocity = nextVel;
     }
+
     // side: -1 = left, 1 = right
     public void turn(int side) {
         rotateVel = side*0.1;
@@ -37,6 +34,7 @@ public class Turtle extends GameObject {
         velocity.scalarMultiply(timeStep);
         position.addVector(velocity);
         direction_facing += rotateVel;
+        System.out.println("updating to " + position.getX() + ',' + position.getY());
     }
 
     public void interact(GameObject other) {}

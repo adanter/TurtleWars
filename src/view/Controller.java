@@ -13,6 +13,7 @@ import model.ComputerPlayer;
 import model.HumanPlayer;
 import model.Player;
 import model.Turtle;
+import model.Game;
 
 import java.util.Map;
 import java.util.ArrayList;
