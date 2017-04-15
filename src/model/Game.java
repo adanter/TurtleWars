@@ -36,7 +36,7 @@ public class Game {
 
             //Update turtles
             for (Turtle turtle : turtles) {
-                turtle.update(elapsedTime);
+                turtle.move(elapsedTime);
             }
 
             ArrayList<Bullet> nextBullets = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Game {
 
             //Update bullets, run interactions, and perform death checks
             for (Bullet bullet : bullets) {
-                bullet.update(elapsedTime);
+                bullet.move(elapsedTime);
                 for (Turtle turtle : turtles) {
                     bullet.interact(turtle);
                 }
