@@ -2,22 +2,19 @@
 package model;
 
 /**
- * Created by Adante on 4/14/2017.
+ * Bullets are produced by turtles and deal damage if they hit another turtle
  */
-public class Bullet {
-    private ObjectVector vector;
-    private double xPosition;
-    private double yPosition;
-    private double size;
+public class Bullet extends GameObject{
+    private ObjectVector velocity;
     private int damage;
     private Turtle parentTurtle;
     private double distanceTraveled = 0;
     private double range = 100; //TODO: Scale when we know more about coordinates
 
-    public Bullet (ObjectVector position, ObjectVector vector) {
-        this.vector = vector;
-        this.xPosition = position.getX();
-        this.yPosition = position.getY();
+    public Bullet (ObjectVector position, ObjectVector velocity, Turtle parentTurtle) {
+        setPosition(position);
+        this.velocity = velocity;
+        this.parentTurtle = parentTurtle;
     }
 
     public void update(double timeStep) {
@@ -26,8 +23,6 @@ public class Bullet {
         setPosition(position);
         distanceTraveled += velocity.getMagnitude();
         if (distanceTraveled >= range) isDead = true;
-    public double getxPosition() {
-        return xPosition;
     }
 
     public void interact(GameObject other) {
@@ -44,16 +39,13 @@ public class Bullet {
 
     public ObjectVector getVelocity() {
         return velocity;
-    public double getyPosition() {
-        return yPosition;
     }
 
-    public double getSize() {
-        return size;
+    public Turtle getParentTurtle() {
+        return parentTurtle;
     }
 
-    public void update() {
-        xPosition += vector.getX();
-        yPosition += vector.getY();
+    public int getDamage() {
+        return damage;
     }
 }
