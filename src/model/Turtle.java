@@ -16,13 +16,20 @@ public class Turtle extends GameObject {
     //private ObjectVector position = new ObjectVector(0,0);
     public ObservableDoubleValue x = new SimpleDoubleProperty(0);
     public ObservableDoubleValue y = new SimpleDoubleProperty(0);
+    public ObjectVector position = new ObjectVector(0,0);
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
 
     public Turtle(ObjectVector position, double size) {
-        this.position = position;
+        setPosition(position);
         this.size = size;
+    }
+
+    public void setPosition(ObjectVector new_position) {
+        position = new_position;
+        x = new SimpleDoubleProperty(new_position.getX());
+        y = new SimpleDoubleProperty(new_position.getY());
     }
 
     public void changeVel(int direction){
@@ -41,6 +48,7 @@ public class Turtle extends GameObject {
     public void update(double timeStep) {
         velocity.scalarMultiply(timeStep);
         position.addVector(velocity);
+        setPosition(position);
         direction_facing += rotateVel;
         System.out.println("updating to " + position.getX() + ',' + position.getY());
     }
