@@ -13,7 +13,7 @@ public class ObjectVector {
         this.y = y;
     }
 
-    public double getx() {
+    public double getX() {
         return x;
     }
 
@@ -60,5 +60,12 @@ public class ObjectVector {
         }
         ObjectVector u = new ObjectVector(newX, newY);
         return u;
+    }
+
+    public double getDistance(ObjectVector vector2) {
+        double difX = x - vector2.getX();
+        double difY = y - vector2.getY();
+        double dist = Math.sqrt(Math.pow(difX,2) + Math.pow(difY,2));
+        return dist;
     }
 }

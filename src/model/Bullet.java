@@ -25,7 +25,7 @@ public class Bullet {
     }
 
     public void update() {
-        xPosition += vector.getx();
+        xPosition += vector.getX();
         yPosition += vector.getY();
     }
 }
