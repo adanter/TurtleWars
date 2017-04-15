@@ -11,13 +11,11 @@ public class Turtle extends GameObject {
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
-    private ArrayList<Bullet> bullets_since_update = new ArrayList<Bullet>();
-//    private Weapon weapon;
+    private Game game;
 
-    public Turtle(ObjectVector position, double size) {
+    public Turtle(ObjectVector position, double size, Game game) {
         setPosition(position);
         this.size = size;
-//        this.weapon = new Weapon(this);
     }
 
     public void changeVel(int direction){
@@ -40,12 +38,6 @@ public class Turtle extends GameObject {
         direction_facing += rotateVel;
     }
 
-    public ArrayList<Bullet> getNewBullets() {
-        ArrayList<Bullet> return_bullets = bullets_since_update;
-        bullets_since_update = new ArrayList<Bullet>();
-        return return_bullets;
-    }
-
     public void interact(GameObject other) {
         if (other instanceof Bullet) {
             Bullet bullet = (Bullet) other;
@@ -59,7 +51,7 @@ public class Turtle extends GameObject {
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
         vector.getUnitVector();
-        bullets_since_update.add(new Bullet(position, vector, this));
+        game.addObject(new Bullet(position, vector, this));
     }
 
     public ObjectVector getVelocity() {return velocity;}
