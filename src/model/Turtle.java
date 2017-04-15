@@ -12,11 +12,6 @@ import javafx.beans.value.ObservableObjectValue;
  */
 public class Turtle extends GameObject {
     int health;
-    double size;
-    //private ObjectVector position = new ObjectVector(0,0);
-    public ObservableDoubleValue x = new SimpleDoubleProperty(0);
-    public ObservableDoubleValue y = new SimpleDoubleProperty(0);
-    public ObjectVector position = new ObjectVector(0,0);
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
@@ -24,12 +19,6 @@ public class Turtle extends GameObject {
     public Turtle(ObjectVector position, double size) {
         setPosition(position);
         this.size = size;
-    }
-
-    public void setPosition(ObjectVector new_position) {
-        position = new_position;
-        x = new SimpleDoubleProperty(new_position.getX());
-        y = new SimpleDoubleProperty(new_position.getY());
     }
 
     public void changeVel(int direction){
@@ -53,7 +42,9 @@ public class Turtle extends GameObject {
         System.out.println("updating to " + position.getX() + ',' + position.getY());
     }
 
-    public void interact(GameObject other) {}
+    public void interact(GameObject other) {
+        //if bullet, lose health
+    }
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
@@ -62,5 +53,4 @@ public class Turtle extends GameObject {
     }
     public ObjectVector getVelocity() {return velocity;}
     public double getSize() {return size;}
-
 }

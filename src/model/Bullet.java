@@ -1,36 +1,26 @@
 
 package model;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableDoubleValue;
+
 /**
- * Created by Adante on 4/14/2017.
+ * Bullets are produced by turtles and deal damage if they hit another turtle
  */
-public class Bullet {
-    private ObjectVector vector;
-    private double xPosition;
-    private double yPosition;
-    private double size;
+public class Bullet extends GameObject{
+    private ObjectVector velocity;
     private int damage;
 
-    public Bullet (ObjectVector position, ObjectVector vector) {
-        this.vector = vector;
-        this.xPosition = position.getX();
-        this.yPosition = position.getY();
+    public Bullet (ObjectVector position, ObjectVector velocity) {
+        setPosition(position);
+        this.velocity = velocity;
     }
 
-    public double getxPosition() {
-        return xPosition;
+    public void update(double timeStep) {
+        velocity.scalarMultiply(timeStep);
+        position.addVector(velocity);
+        setPosition(position);
     }
 
-    public double getyPosition() {
-        return yPosition;
-    }
-
-    public double getSize() {
-        return size;
-    }
-
-    public void update() {
-        xPosition += vector.getX();
-        yPosition += vector.getY();
-    }
+    public void interact(GameObject other) {}
 }
