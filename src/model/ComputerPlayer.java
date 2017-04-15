@@ -6,7 +6,7 @@ package model;
  * and calls the methods of its turtle
  */
 public class ComputerPlayer extends Player{
-    Turtle turtle;
+    TurtleAcc turtle;
 
     public boolean isHuman(){
         return false;

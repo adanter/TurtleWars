@@ -12,17 +12,35 @@ public class HumanPlayer extends Player {
         return true;
     }
 
-    public void getKeyAction(char keyPressed){
-        if (keyPressed == 'u') {
-            turtle.accelerate(1);
-        } else if (keyPressed == 'd') {
-            turtle.accelerate(-1);
-        } else if (keyPressed == 'l') {
-            turtle.turn(-1);
-        } else if (keyPressed == 'r') {
-            turtle.turn(1);
+    public void getKeyAction(String keyPressed){
+        switch(keyPressed) {
+            case "forward":
+                turtle.changeVel(1);
+                break;
+            case "back":
+                turtle.changeVel(-1);
+                break;
+            case "left":
+                turtle.turn(-1);
+                break;
+            case "right":
+                turtle.turn(1);
+                break;
+            case "notf":
+                turtle.changeVel(0);
+                break;
+            case "notb":
+                turtle.changeVel(0);
+                break;
+            case "notl":
+                turtle.turn(0);
+                break;
+            case "notr":
+                turtle.turn(0);
+                break;
+            default:
+                break;
         }
-
     }
 
     // don't implement - for computers

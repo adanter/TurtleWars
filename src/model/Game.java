@@ -7,5 +7,5 @@ import java.util.ArrayList;
  */
 public class Game {
     private int numPlayers;
-    private ArrayList<Turtle> turtles = new ArrayList<Turtle>();
+    private ArrayList<TurtleAcc> turtles = new ArrayList<TurtleAcc>();
 }
