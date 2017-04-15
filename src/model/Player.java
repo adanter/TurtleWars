@@ -1,8 +1,9 @@
 package model;
 
+import javax.swing.event.ChangeListener;
+
 public class Player{
-    Turtle turtle;
-    public void addPositionListener() {turtle.addPositionListener();}
+    public Turtle turtle;
     public boolean isHuman() { return true;}
     public void getKeyAction(String keyPressed) {}
     public void getAutoAction() {}

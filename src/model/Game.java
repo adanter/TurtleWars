@@ -17,7 +17,7 @@ public class Game {
 
     /**
      * Once the game has been set up (i.e., players and turtles have been instantiated), this method will run the game
-     * in real time.  The idea is that it will loop over all game objects (turtles, bullets) and update them.
+     * in real time.  The idea is that it will loop over all game objects (turtles, bullets) and move them.
      */
     public void runGame() {
         boolean gameOver = false;
@@ -37,7 +37,7 @@ public class Game {
 
             //Update turtles
             for (Turtle turtle : turtles) {
-                turtle.update(elapsedTime);
+                turtle.move(elapsedTime);
             }
 
             ArrayList<Bullet> nextBullets = new ArrayList<>();
@@ -45,7 +45,7 @@ public class Game {
 
             //Update bullets, run interactions, and perform death checks
             for (Bullet bullet : bullets) {
-                bullet.update(elapsedTime);
+                bullet.move(elapsedTime);
                 for (Turtle turtle : turtles) {
                     bullet.interact(turtle);
                 }

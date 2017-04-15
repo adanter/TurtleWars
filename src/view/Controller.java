@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableDoubleValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -10,10 +12,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import model.*;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
+import model.ComputerPlayer;
+import model.HumanPlayer;
+import model.Player;
+import model.Turtle;
+import model.Game;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Controller {
+public class Controller{
     @FXML
     HBox statusBar;
     @FXML
@@ -119,6 +132,10 @@ public class Controller {
         }
     }
 
+    public void update(Observable o,Object arg){
+
+    }
+
     /**
      * Method for creating a new player and a corresponding turtle
      */
@@ -130,5 +147,7 @@ public class Controller {
             newPlayer = new ComputerPlayer(game);
         }
         players.add(newPlayer);
+        newPlayer.turtle.addObserver(new ObjectObserver());
     }
+
 }

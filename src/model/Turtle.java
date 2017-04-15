@@ -28,7 +28,7 @@ public class Turtle extends GameObject {
         rotateVel = side*0.1;
     };
 
-    public void update(double timeStep) {
+    public void move(double timeStep) {
         ObjectVector posChange = velocity.scalarMultiply(timeStep);
         position = position.addVector(velocity);
         setPosition(position);

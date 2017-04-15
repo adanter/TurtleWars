@@ -17,7 +17,7 @@ public class Bullet extends GameObject{
         this.parentTurtle = parentTurtle;
     }
 
-    public void update(double timeStep) {
+    public void move(double timeStep) {
         velocity.scalarMultiply(timeStep);
         position.addVector(velocity);
         setPosition(position);
