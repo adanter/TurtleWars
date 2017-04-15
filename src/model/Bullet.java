@@ -13,7 +13,7 @@ public class Bullet {
 
     public Bullet (ObjectVector position, ObjectVector vector) {
         this.vector = vector;
-        this.xPosition = position.getx();
+        this.xPosition = position.getX();
         this.yPosition = position.getY();
     }
 

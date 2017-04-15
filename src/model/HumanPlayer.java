@@ -9,7 +9,7 @@ public class HumanPlayer extends Player {
     Turtle turtle;
 
     public HumanPlayer() {
-        turtle = new Turtle();
+        turtle = new Turtle(new ObjectVector(0,0), 1);
     }
 
     public boolean isHuman(){

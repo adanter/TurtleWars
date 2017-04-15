@@ -11,16 +11,14 @@ public class Turtle extends GameObject {
     int health;
     Weapon weapon;
     double size;
-    int color;
     private ObjectVector position = new ObjectVector(0,0);
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
 
-    public Turtle(ObjectVector position, double size, int color) {
+    public Turtle(ObjectVector position, double size) {
         this.position = position;
         this.size = size;
-        this.color = color;
     }
 
     public void changeVel(int direction){
