@@ -105,5 +105,4 @@ public class Controller {
         Turtle newTurtle = new Turtle();
         playerTurtleMap.put(newPlayer, newTurtle);
     }
-
 }
