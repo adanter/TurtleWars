@@ -1,13 +1,21 @@
 package model;
 
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.DoublePropertyBase;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableDoubleValue;
+import javafx.beans.value.ObservableObjectValue;
+
 /**
  * Implements the position and movement of turtle
  */
 public class Turtle extends GameObject {
     int health;
     double size;
-    private ObjectVector position = new ObjectVector(0,0);
+    //private ObjectVector position = new ObjectVector(0,0);
+    public ObservableDoubleValue x = new SimpleDoubleProperty(0);
+    public ObservableDoubleValue y = new SimpleDoubleProperty(0);
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
