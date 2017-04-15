@@ -66,7 +66,7 @@ public class Game implements Runnable{
 
             //if (turtles.size() <= 1) gameOver = true;
             //gameOver = true; //TODO: Remove this when we're ready to run!
-            if (index > 5){
+            if (index > 1000){
                 gameOver = true;
             }
             index ++;
