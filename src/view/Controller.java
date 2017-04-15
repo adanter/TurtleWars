@@ -5,10 +5,12 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import model.ComputerPlayer;
 import model.HumanPlayer;
 import model.Player;
@@ -21,8 +23,12 @@ import java.util.ArrayList;
 public class Controller {
     @FXML
     HBox statusBar;
+    @FXML
+    GridPane display;
     private int numPlayers;
+    private Map<Player, Turtle> playerTurtleMap;
     ArrayList<Player> players = new ArrayList<Player>();
+    ArrayList<HBox> healthBarList = new ArrayList<>();
 
     public Controller() {
         addPlayer(true);
@@ -31,13 +37,28 @@ public class Controller {
     public void menuButtonClicked() {
         System.out.println("Pressed Button");
         fillStatusBar();
+        updateHealth(healthBarList.get(0));
+    }
+
+    public void updateHealth(HBox healthBar){
+        int curHealth = 10; //replace with actual health value
+        for (int i = 0; i < curHealth; i++) {
+            Rectangle r = (Rectangle) healthBar.getChildren().get(i);
+            r.setFill(Paint.valueOf("red"));
+        }
+        for (int i = curHealth; i < 10; i++) {
+            Rectangle r = (Rectangle) healthBar.getChildren().get(i);
+            r.setFill(Paint.valueOf("black"));
+        }
     }
 
     @FXML
     public void fillStatusBar(){
         VBox v = new VBox(1.0);
         v.setAlignment(Pos.CENTER_RIGHT);
-        v.getChildren().addAll(genHealthBar(7), new Label("Player"));
+        HBox newBar = genHealthBar(7);
+        healthBarList.add(newBar);
+        v.getChildren().addAll(newBar, new Label("Player"));
         statusBar.getChildren().addAll(v);
     }
 
@@ -103,4 +124,5 @@ public class Controller {
         }
         players.add(newPlayer);
     }
+
 }
