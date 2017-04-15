@@ -28,17 +28,18 @@ public class Turtle extends GameObject {
     // side: -1 = left, 1 = right
     public void turn(int side) {
         rotateVel = side*0.1;
-    }
+    };
 
     public void update(double timeStep) {
         velocity.scalarMultiply(timeStep);
         position.addVector(velocity);
-        ObjectVector angleVector = new ObjectVector(0,0);
         direction_facing += rotateVel;
     }
 
     public void interact(GameObject other) {}
-    public void shoot(){}
+    public void shoot(){
+        new Bullet();
+    }
     public ObjectVector getPosition() {return position;}
     public ObjectVector getVelocity() {return velocity;}
 
