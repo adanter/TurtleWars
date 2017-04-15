@@ -1,15 +1,13 @@
 package model;
 
 
-import java.util.ArrayList;
-
 /**
  * Implements the position and movement of turtle
  */
 public class Turtle extends GameObject {
     int health;
     private ObjectVector velocity = new ObjectVector(0,0);
-    private double direction_facing = 0;
+    private double directionFacing = 0;
     private double rotateVel = 0;
     private Game game;
 
@@ -20,10 +18,9 @@ public class Turtle extends GameObject {
 
     public void changeVel(int direction){
         ObjectVector nextVel = new ObjectVector(1,0);
-        nextVel.setAngle(direction_facing);
+        nextVel.setAngle(directionFacing);
         nextVel = nextVel.getUnitVector();
-        nextVel.scalarMultiply(direction);
-        velocity = nextVel;
+        velocity = nextVel.scalarMultiply(direction);;
     }
 
     // side: -1 = left, 1 = right
@@ -32,10 +29,10 @@ public class Turtle extends GameObject {
     };
 
     public void update(double timeStep) {
-        velocity.scalarMultiply(timeStep);
-        position.addVector(velocity);
+        ObjectVector posChange = velocity.scalarMultiply(timeStep);
+        position = position.addVector(velocity);
         setPosition(position);
-        direction_facing += rotateVel;
+        directionFacing += rotateVel;
     }
 
     public void interact(GameObject other) {
@@ -55,11 +52,12 @@ public class Turtle extends GameObject {
 
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
-        vector.setAngle(direction_facing);
-        vector.getUnitVector();
+        vector.setAngle(directionFacing);
+        vector = vector.getUnitVector();
         game.addObject(new Bullet(position, vector, this));
     }
 
     public ObjectVector getVelocity() {return velocity;}
     public double getSize() {return size;}
+    public double getDirectionFacing() {return directionFacing;}
 }

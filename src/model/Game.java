@@ -32,7 +32,7 @@ public class Game {
             for (int i = 0; i < objects.size(); i++) {
                 GameObject object = objects.get(i);
                 object.update(elapsedTime);
-                for (int j = i+1; j < objects.size(); j++) {
+                for (int j = i + 1; j < objects.size(); j++) {
                     GameObject object2 = objects.get(j);
                     if (object2 != object) {
                         if (object.closeTo(object2)) {
@@ -53,4 +53,6 @@ public class Game {
     public void addPlayer(Player player) {
         players.add(player);
     }
+
 }
+

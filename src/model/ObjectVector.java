@@ -26,9 +26,10 @@ public class ObjectVector {
         return mag;
     }
 
-    public void scalarMultiply (double scalar) {
-        x = x * scalar;
-        y = y * scalar;
+    public ObjectVector scalarMultiply (double scalar) {
+        double newX = x * scalar;
+        double newY = y * scalar;
+        return new ObjectVector(newX, newY);
     }
 
     public double getAngle () {
@@ -42,9 +43,10 @@ public class ObjectVector {
         x = mag * Math.cos(angle);
     }
 
-    public void addVector (ObjectVector vector) {
-        y += vector.y;
-        x += vector.x;
+    public ObjectVector addVector (ObjectVector vector) {
+        double newY = y + vector.y;
+        double newX = x + vector.x;
+        return new ObjectVector(newX, newY);
     }
 
     public ObjectVector getUnitVector () {
