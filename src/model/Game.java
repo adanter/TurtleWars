@@ -34,36 +34,29 @@ public class Game {
                 player.getAutoAction();
             }
 
-            //Update objects and run interactions
-            for (int i = 0; i < objects.size(); i++) {
-                GameObject object = objects.get(i);
-                object.update(elapsedTime);
-                for (int j = i + 1; j < objects.size(); j++) {
-                    GameObject object2 = objects.get(j);
-                    if (object2 != object) {
-                        if (object.closeTo(object2)) {
-                            object.interact(object2);
-                            object2.interact(object);
-                        }
-                    }
-                }
-            }
-
-            ArrayList<Turtle> nextTurtles = new ArrayList<>();
-            ArrayList<Bullet> nextBullets = new ArrayList<>();
-            //Run death checks
+            //Update turtles
             for (Turtle turtle : turtles) {
-                if (!turtle.isDead()) nextTurtles.add(turtle);
-            }
-            for (Bullet bullet : bullets) {
-                if (!bullet.isDead()) nextBullets.add(bullet);
+                turtle.update(elapsedTime);
             }
 
-            turtles = nextTurtles;
-            bullets = nextBullets;
+            //Update bullets, run interactions, and perform death checks
+            for (Bullet bullet : bullets) {
+                bullet.update(elapsedTime);
+                for (Turtle turtle : turtles) {
+                    bullet.interact(turtle);
+                }
+                if (bullet.isDead()) bullets.remove(bullet);
+            }
+
+            //Run turtle interactions and perform death checks
+            for (Turtle turtle : turtles) {
+                for (Bullet bullet : bullets) {
+                    turtle.interact(bullet);
+                }
+                if (turtle.isDead()) turtles.remove(turtle);
+            }
 
             if (turtles.size() <= 1) gameOver = true;
-
             gameOver = true; //TODO: Remove this when we're ready to run!
         }
     }
@@ -92,6 +85,4 @@ public class Game {
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
 }
-
