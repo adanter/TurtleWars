@@ -5,27 +5,24 @@ package model;
  * Created by Adante on 4/14/2017.
  */
 public class Bullet {
-    private ObjectVector vector;
-    private double xPosition;
-    private double yPosition;
+    private ObjectVector velocity;
+    private ObjectVector position;
     private int damage;
 
-    public Bullet (ObjectVector position, ObjectVector vector) {
-        this.vector = vector;
-        this.xPosition = position.getx();
-        this.yPosition = position.getY();
+    public Bullet (ObjectVector position, ObjectVector velocity) {
+        this.velocity = velocity;
+        this.position = position;
     }
 
-    public double getxPosition() {
-        return xPosition;
+    public ObjectVector getPosition() {
+        return position;
     }
 
-    public double getyPosition() {
-        return yPosition;
+    public ObjectVector getVelocity() {
+        return velocity;
     }
 
     public void update() {
-        xPosition += vector.getX();
-        yPosition += vector.getY();
+        position.addVector(velocity);
     }
 }
