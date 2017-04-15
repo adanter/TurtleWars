@@ -23,11 +23,16 @@ public class Game {
 //            curTime = System.currentTimeMillis();
 //            elapsedTime = curTime - prevTime;
             // TODO: Update all game objects
-            for (GameObject object: objects) {
+            for (int i = 0; i < objects.size(); i++) {
+                GameObject object = objects.get(i);
                 object.update(0.001);
-                for (GameObject object2: objects) {
+                for (int j = i+1; j < objects.size(); j++) {
+                    GameObject object2 = objects.get(j);
                     if (object2 != object) {
-
+                        if (object.closeTo(object2)) {
+                            object.interact(object2);
+                            object2.interact(object);
+                        }
                     }
                 }
             }
