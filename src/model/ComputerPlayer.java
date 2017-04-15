@@ -12,8 +12,8 @@ public class ComputerPlayer extends Player{
         return false;
     }
 
+    public void getAutoAction(){}
+
     // don't implement - for humans
     public void getKeyAction(int keyPressed){}
-
-    public void getAutoAction(){}
 }

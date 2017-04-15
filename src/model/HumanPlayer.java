@@ -12,7 +12,18 @@ public class HumanPlayer extends Player {
         return true;
     }
 
-    public void getKeyAction(int keyPressed){}
+    public void getKeyAction(char keyPressed){
+        if (keyPressed == 'u') {
+            turtle.accelerate(1);
+        } else if (keyPressed == 'd') {
+            turtle.accelerate(-1);
+        } else if (keyPressed == 'l') {
+            turtle.turn(-1);
+        } else if (keyPressed == 'r') {
+            turtle.turn(1);
+        }
+
+    }
 
     // don't implement - for computers
     public void getAutoAction(){}

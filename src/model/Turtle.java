@@ -13,12 +13,17 @@ public class Turtle {
     int color;
     int player;
     private int[] pos = new int[2];
+    private double velocity = 0;
+    private double rotate_vel = 0;
 
-    public void move() {}
-    public void shoot(){}
-    public int[] getPos() {
-        pos[0] = 0;
-        pos[1] = 0;
-        return pos;
+    public void accelerate(int direction){
+        velocity += direction;
     }
+    // direction: -1 = left, 1 = right
+    public void turn(int direction) {
+        rotate_vel += direction;
+    }
+    public void shoot(){}
+    public int[] getPos() {return pos;}
+    public double getVelocity() {return velocity;}
 }
