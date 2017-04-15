@@ -1,9 +1,14 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import model.ComputerPlayer;
 import model.HumanPlayer;
 import model.Player;
@@ -26,6 +31,28 @@ public class Controller {
 
     public void menuButtonClicked() {
         System.out.println("Pressed Button");
+        fillStatusBar();
+    }
+
+    @FXML
+    public void fillStatusBar(){
+        VBox v = new VBox(1.0);
+        v.setAlignment(Pos.CENTER_RIGHT);
+        v.getChildren().addAll(genHealthBar(7), new Label("Player"));
+        statusBar.getChildren().addAll(v);
+    }
+
+    public HBox genHealthBar(int curHealth){
+        HBox result = new HBox(1);
+        for (int i = 0; i < curHealth; i++){
+            Rectangle r = new Rectangle(4,7, Paint.valueOf("red"));
+            result.getChildren().add(r);
+        }
+        for (int i = curHealth; i < 10; i++) {
+            Rectangle r = new Rectangle(4,7, Paint.valueOf("black"));
+            result.getChildren().add(r);
+        }
+        return result;
     }
 
     public void keyListener(KeyEvent event){
