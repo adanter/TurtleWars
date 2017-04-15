@@ -10,10 +10,12 @@ import javafx.beans.value.ObservableDoubleValue;
 public class Bullet extends GameObject{
     private ObjectVector velocity;
     private int damage;
+    private Turtle parentTurtle;
 
-    public Bullet (ObjectVector position, ObjectVector velocity) {
+    public Bullet (ObjectVector position, ObjectVector velocity, Turtle parentTurtle) {
         setPosition(position);
         this.velocity = velocity;
+        this.parentTurtle = parentTurtle;
     }
 
     public void update(double timeStep) {
@@ -23,4 +25,17 @@ public class Bullet extends GameObject{
     }
 
     public void interact(GameObject other) {}
+
+
+    public ObjectVector getVelocity() {
+        return velocity;
+    }
+
+    public Turtle getParentTurtle() {
+        return parentTurtle;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
 }

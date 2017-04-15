@@ -1,11 +1,7 @@
 package model;
 
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.DoublePropertyBase;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableDoubleValue;
-import javafx.beans.value.ObservableObjectValue;
+import java.util.ArrayList;
 
 /**
  * Implements the position and movement of turtle
@@ -15,10 +11,13 @@ public class Turtle extends GameObject {
     private ObjectVector velocity = new ObjectVector(0,0);
     private double direction_facing = 0;
     private double rotateVel = 0;
+    private ArrayList<Bullet> bullets_since_update = new ArrayList<Bullet>();
+//    private Weapon weapon;
 
     public Turtle(ObjectVector position, double size) {
         setPosition(position);
         this.size = size;
+//        this.weapon = new Weapon(this);
     }
 
     public void changeVel(int direction){
@@ -39,18 +38,30 @@ public class Turtle extends GameObject {
         position.addVector(velocity);
         setPosition(position);
         direction_facing += rotateVel;
-        System.out.println("updating to " + position.getX() + ',' + position.getY());
+    }
+
+    public ArrayList<Bullet> getNewBullets() {
+        ArrayList<Bullet> return_bullets = bullets_since_update;
+        bullets_since_update = new ArrayList<Bullet>();
+        return return_bullets;
     }
 
     public void interact(GameObject other) {
-        //if bullet, lose health
+        if (other instanceof Bullet) {
+            Bullet bullet = (Bullet) other;
+            if (bullet.getParentTurtle() != this) {
+                health -= bullet.getDamage();
+            }
+        }
     }
+
     public void shoot(){
         ObjectVector vector = new ObjectVector(0,1);
         vector.setAngle(direction_facing);
         vector.getUnitVector();
-        new Bullet(position, vector);
+        bullets_since_update.add(new Bullet(position, vector, this));
     }
+
     public ObjectVector getVelocity() {return velocity;}
     public double getSize() {return size;}
 }
