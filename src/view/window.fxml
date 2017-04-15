@@ -1,0 +1,24 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:controller="view.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          onKeyPressed="#keyListener"
+          onKeyReleased="#keyReleaseListener">
+    <VBox alignment="TOP_CENTER">
+        <HBox fx:id="menuBar"
+              alignment="CENTER_LEFT">
+            <Button fx:id="menuButton" text="Menu"
+            onAction="#menuButtonClicked">
+            </Button>
+        </HBox>
+        <GridPane fx:id="display">
+        </GridPane>
+
+        <HBox fx:id="statusBars">
+
+        </HBox>
+
+    </VBox>
+</GridPane>

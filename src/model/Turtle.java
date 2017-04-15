@@ -39,4 +39,5 @@ public class Turtle {
     public void shoot(){}
     public ObjectVector getPosition() {return position;}
     public ObjectVector getVelocity() {return velocity;}
+
 }
