@@ -16,5 +16,5 @@ public class GameObject {
         return position.getDistance(other.getPosition()) < size + other.getSize();
     }
 
-    public double getSize() {return 0;}
+    public double getSize() {return size;}
 }
